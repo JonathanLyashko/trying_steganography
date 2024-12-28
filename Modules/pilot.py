@@ -4,19 +4,18 @@ from PIL import Image
 
 # Helper functions:
 def convert_rgb_to_binary(rgb):
-    # Convert an integer tuple (RGB) to a binary tuple
-    bin_vals = []
+    """Converts an integer tuple (RGB) to a binary tuple."""
+    binary_values = []
     for value in rgb:
-        bin_vals.append(format(value, '08b'))
-    return tuple(bin_vals)
+        binary_values.append(format(value, '08b'))
+    return tuple(binary_values)
 
-
-def convert_binary_to_rgb(bin_rgb):
-    # Converts a binary tuple into an integer tuple (rgb)
-    rgb_vals = []
-    for value in bin_rgb:
-        rgb_vals.append(int(value, 2))
-    return tuple(rgb_vals)
+def convert_binary_to_rgb(binary_rgb):
+    """Converts a binary tuple to an integer tuple (RGB)."""
+    rgb_values = []
+    for value in binary_rgb:
+        rgb_values.append(int(value, 2))
+    return tuple(rgb_values)
 
 
 def replace_least_significant_bit(og_rgb, bin_bits):
@@ -93,15 +92,17 @@ def decode_message(image_path):
                 print(value)
 
     print("Step one complete")
+    print(f"Binary message: {binary_message}")
 
     # Convert binary data to text
     decoded_characters = []
     for i in range(0, len(binary_message), 8):
         byte = binary_message[i:i + 8]
         decoded_characters.append(chr(int(byte, 2)))
-        print(i)
+        print(f"Byte {i // 8}: {byte} -> {chr(int(byte, 2))}")
 
     message = ''.join(decoded_characters)
+    print(f"Decoded message: {message}")
 
     # Look for the delimiter to identify the end of the message
     delimiter_position = message.find(DELIMITER)
