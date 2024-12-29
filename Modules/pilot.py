@@ -88,6 +88,7 @@ def decode_message(image_path):
 
             # Extract the least significant bits
             for value in current_rgb:
+                binary_message += value[-2]
                 binary_message += value[-1]
                 print(value)
 
