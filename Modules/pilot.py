@@ -22,7 +22,7 @@ def replace_least_significant_bit(og_rgb, bin_bits):
     # Replaces the least significant bit of each RGB component with a bit
     modified_rgb = []
     for i in range(3):
-        new_value = og_rgb[i][:-1] + bin_bits[i]
+        new_value = og_rgb[i][:-2] + bin_bits[i]
         modified_rgb.append(new_value)
     return tuple(modified_rgb)
 
@@ -31,7 +31,7 @@ DELIMITER = '::END::'
 
 def encode_message(image_path, message, output_path):
     # Encodes a text message into a picture
-    img = Image.open(image_path)
+    img = Image.open(image_path).convert("RGB")
     pixels = img.load()
 
     # Append a delimiter to the message
@@ -72,7 +72,7 @@ def decode_message(image_path):
     """Decodes a text message from an image."""
 
     print("decode called")
-    img = Image.open(image_path)
+    img = Image.open(image_path).convert("RGB")
     print("Image opened")
     pixels = img.load()
     print("Pixels loaded")
@@ -127,4 +127,4 @@ if __name__ == "__main__":
     else:
         print("Invalid choice.")
 
-"C:/Users/lyash/Projects/trying_steganography/"
+"C:/Users/lyash/Projects/trying_steganography/images/test.jpg"
