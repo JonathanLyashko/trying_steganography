@@ -102,12 +102,12 @@ if __name__ == "__main__":
         choice = input("Do you wish to [E]ncode or [D]ecode an image?: \n").lower()
 
         if choice == "e":
-            image_path = input("What is the input image path?: ")
-            output_path = input("What is the output path?: ")
-            message = input("What is the message you would like to encode?: ")
+            chosen_image_path = input("What is the input image path?: ")
+            chosen_output_path = input("What is the output path?: ")
+            chosen_message = input("What is the message you would like to encode?: ")
 
             try:
-                encode_image(image_path=image_path, message=message, output_path=output_path)
+                encode_image(image_path=chosen_image_path, message=chosen_message, output_path=chosen_output_path)
             except:
                 print("An error has occured and the file was not encoded. Check to make sure your inputs are correct")
         
