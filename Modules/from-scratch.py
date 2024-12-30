@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
         if choice == "e":
             chosen_image_path = input("What is the input image path?: ")
-            chosen_output_path = input("What is the output path?: ")
+            chosen_output_path = input("What is the output path? (Must be a .jpg file ending): ")
             chosen_message = input("What is the message you would like to encode?: ")
 
             try:
